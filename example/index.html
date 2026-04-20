@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../style.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh; max-width: 40%;" data-aos="fade-up">
+
+
+
+    <div style="width: 50%; display: flex; justify-content: end;">
+        <div>
+            ambil link di
+            <a href="https://webhook.cool/" target="_blank">
+            webhook.cool
+            </a>
+        </div>
+    </div>
+
+    <div class="w-50">
+
+        <!-- URL INPUT -->
+        <input id="urlInput" type="text" class="form-control mb-2"
+               placeholder="Masukkan URL Webhook...">
+
+        <!-- MESSAGE INPUT -->
+        <input id="textInput" type="text" class="form-control"
+               placeholder="Ketik Pesan Disini...">
+
+        <!-- BUTTON -->
+        <button id="submitBtn" class="btn btn-primary mt-3 w-100">
+            Send POST
+        </button>
+
+
+
+    </div>
+
+    <button class="card-menu bg-hover-b m-5" onclick="window.location.href='../'">
+            <span class="material-symbols-rounded white-color">
+                arrow_forward
+            </span>
+            <h1>Back</h1>
+    </button>
+
+</div>
+
+<script type="module">
+import * as api from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.8/api.js";
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+
+    const url = document.getElementById("urlInput").value;
+    const text = document.getElementById("textInput").value;
+
+    if (!url) {
+        alert("URL tidak boleh kosong!");
+        return;
+    }
+
+    if (!text) {
+        alert("Pesan tidak boleh kosong!");
+        return;
+    }
+
+    api.postJSON(url, { message: text });
+
+});
+</script>
+
+
+    <!-- Script Ref -->
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+        easing: 'ease-out',
+        duration: 800,
+        once: true
+        });
+    </script>
+
+</body>
+</html>
